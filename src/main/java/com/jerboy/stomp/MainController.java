@@ -16,8 +16,13 @@ public class MainController {
   SimpMessagingTemplate messagingTemplate;
 
   @RequestMapping("/send")
-  public void send(){
-
+  public void sendAll(){
     messagingTemplate.convertAndSend("/topic/follow", "Test Message");
+  }
+
+
+  @RequestMapping("/sendToUser")
+  public void sendToUser(){
+    messagingTemplate.convertAndSendToUser("user-demo", "/topic/follow", "Test Message");
   }
 }
